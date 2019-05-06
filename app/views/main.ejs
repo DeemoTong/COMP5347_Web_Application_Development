@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>COMP5347 Group11 Assignment2</title>
+
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="/css/animate.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+        <link href="/css/tablestyle.css" rel="stylesheet">
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="/js/jquery-2.1.1.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script type="text/js" src="/js/jquery.js"></script>
+    </head>
+    <body class="gray-bg">
+    <div>
+        <h1 class="logo-name">WikiLatic</h1>
+    </div>
+    <div class="large-box text-center animated fadeInDown">
+        <div>
+            <h2>Welcome to WikiLatic: <%= username%></h2>
+            <!--introduction-->
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Functions in Overall Analytics: (Overall Analysis)
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <p>1.Click a button with input number to Show how many top and bottom articles with revisions</p>
+                            <p>2.Show top or bottom articles with the number of no-repeat users</p>
+                            <p>3.Show article with the longest and shortest history</p>
+                            <p>4.Bar chart: Show revision number distribution by each year and user type</p>
+                            <p>5.Pie chart: Show revision number distribution by user type</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Function show in Individual Analytics: (Individual Analysis)
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <p>1.A datalist to select a specific article, hint with revision numbers</p>
+                            <p>2.Show the selected article's title, revision numbers and top 5 user's information</p>
+                            <p>3.Bar chart: Show revision number distribution by each year and user type for the article</p>
+                            <p>4.Pie chart: Show revision number distribution by user type  for the article</p>
+                            <p>5.Bar chart: Click a button with input number to Show a few top user  for the article</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                                Function show in Author Analytics: (Author Analysis)
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <p>1.Click a button with input author name to Show article's name and revision number</p>
+                            <p>2.Select a specific article and show all the timestamp information of all the revisions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--navigation-->
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#OverallAnalysis" data-toggle="tab">Overall Analysis</a></li>
+                <li><a href="#IndividualAnalysis" data-toggle="tab" id="individualTrigger">Individual Analysis</a></li>
+                <li><a href="#AuthorAnalysis" data-toggle="tab" id="authorTrigger">Author Analysis</a></li>
+            </ul>
+            <!-- div which contains functions-->
+            <div id="myTabContent" class="tab-content container">
+                <div class="tab-pane fade in active" id="OverallAnalysis">
+                    <h5> Overall Analytics</h5>
+                    <div id="divcss21">
+                        <h4>Show me the
+                            <select name="top" id="top">
+                                <option value="-1">highest</option>
+                                <option value="1">lowest</option>
+                            </select>
+                            <input type="text" name="range" id="range" value="3"/>
+                            articles.
+                        </h4>
+                        <button class="btn btn-default" id="searchButton" >Search</button>
+                        <div id="ModifyTimeResult"></div>
+                    </div>
+                    <div id="divcss21">
+                        <p>the article edited by
+                            <select name="userOrder" id="userOrder">
+                                <option value="-1">largest</option>
+                                <option value="1">smallest</option>
+                            </select>
+                            group of registered users.<button id="userRange">show me</button></p>
+                        <div id="UserNumResult" ></div>
+                        <p>the article which has the
+                            <select name="hisOrder" id="hisOrder">
+                                <option value="1">longest</option>
+                                <option value="-1">shortest</option>
+                            </select>
+                            history.
+                            <button id="hisOrderButton">show me</button></p>
+                        <div id="HistoryResult" ></div>
+                    </div>
+
+                    <div id="divcss21">
+                        the overall yearly revision number distribution bar chart<button id="YearUserBarChart">show me </button><br>
+                        the pie chart of revision number distribution by user type<button id="UserPieChart">show me </button>
+                        <div class="center-block" id="overallBarChart"></div>
+                    </div>
+                </div>
+
+                <!--individual-->
+                <div class="tab-pane fade" id="IndividualAnalysis">
+                    <div id='result' class="container">
+                        <h5> Individual Article Analytics</h5>
+                        <div id="divcss21">
+
+                            <h4>Please select a article titles</h4>
+                            <input list="browsers1" style="width:300px" id="browserValue">
+                            <datalist id="browsers1"></datalist>
+                            <button id="selectTitle">check information by this title</button>
+
+                        </div>
+                        <div id="divcss22">
+                            <p>Title Name:</p>
+                            <p id = "title"></p>
+                            <p>Total Number:</p>
+                            <p id = "totalNum"></p>
+                            <br />
+                            <p>Total 5 User For This Title:</p>
+                            <div class="col-md-offset-5" ><table id = "authorTable" ></table></div>
+
+                        </div>
+
+                        <div id="divcss23">
+                            <b id="errorCheck"></b>
+                            <b id="textResult">You need to choose the type of the chart</b>
+                            <br />
+                            <fieldset>
+                                <legend>Bar chart showing yearly revision number distribution:<button id="selectBarChartTypeByTitle">show me</button></legend>
+                                <div id="BarChartTypeByTitleResult"></div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Pie chart showing user type distribution:<button id="selectPieChartTypeByTitle">show me</button></legend>
+                                <div id="PieChartTypeByTitleResult"></div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>single user yearly revision distribution(range:<input type="number" min="1" max="5" id="TopUserNumber" value="5" style="width:50px;"/>)
+                                    <button id="selectChartTypeByTopUserAndTitle">Pie chart By Top User</button>
+                                </legend>
+                            </fieldset>
+
+                            <br />
+                            <div id="singleUserBarChartResult"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--Author Analysis-->
+                <div class="tab-pane fade" id="AuthorAnalysis">
+                    <div id='part3'>
+                        <h5> Author Analytics</h5>
+                        <div id="divcss31">
+                            <h4>Please input an author name(e.g. Andreasegde)</h4>
+                            <input list="browsers3" id="AuthorNameInput">
+                            <datalist id="browsers3"></datalist>
+                            <button id="AuthorNameButton">check information by this title</button>
+                        </div>
+                        <div id="divcss32" >
+                            <p id="testpId">Author Table:</p>
+                            <br />
+                            <table id = "authorTableByName" class="col-md-offset-4"></table>
+
+                            <h4>Please select a article titles</h4>
+                            <button id="searchMoreInfoButton">search more info</button>
+                            <br />
+
+                            <p id="SelectedArticleTitle"></p>
+
+                            <div id="divByNameAndTitle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height:200px"></div>
+        </div>
+    </div>
+    </body>
+    <script type="text/javascript" src="/js/main.js"></script>
+</html>

@@ -1,0 +1,25 @@
+table {
+   border-collapse:collapse;
+   border-spacing: 0;
+
+}
+
+table td,th{
+   border-top: 1pt solid #95BEF0;
+   border-right: 2pt solid #95BEF0;
+   border-left:  2pt solid #95BEF0;
+   border-bottom: 1px solid #95BEF0;
+   line-height: 1.5em;
+   vertical-align: middle;
+   padding: 0.5em 0.75em;
+}
+
+
+#divcss21,#divcss22,#divcss23
+{
+   border-color: black;
+   border-style:solid;
+   border-width:1px;
+   padding: 10px;
+   margin: 15px;
+}
