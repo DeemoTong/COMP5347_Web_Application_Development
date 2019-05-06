@@ -12,7 +12,9 @@ This is a data analytic web application with three-tiered architecture. It is re
 
 ## How to use
 
-1. Install `MongoDB` and create two collections. One called `User` for Login and Registering, the other one called `Revision` for storing Wikipedia history. You can find the Wikipedia history dataset from [dataset](dataset). And import the dataset into `Revision` collection.
+> **This project invokes google's APIs for drawing charts, if you are in China, you may need a VPN for correct charts.**
+
+1. Install `MongoDB`. You can find the Wikipedia history dataset from [dataset](dataset). And import the dataset into `Revision` collection.
 
 2. Clone this repo to your device and install all dependencies.
 
