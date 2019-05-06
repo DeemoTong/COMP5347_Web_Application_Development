@@ -10,14 +10,18 @@ var rule = {       //judge the format of input
 $().ready(function () {
 	$("#username").change(checkusername);
 	$("#username").click(usernameFormat);
+	$("#usernamer").change(checkusernameR);
+	$("#usernamer").click(usernameFormatR);
 	$("#firstname").change(checkfirstname);
-	$("#firstname").click(nameFormat);
+	$("#firstname").click(nameFormatR);
 	$("#lastname").change(checklastname);
-	$("#lastname").click(nameFormat);
+	$("#lastname").click(nameFormatR);
 	$("#password").click(passwordFormat);
 	$("#password").change(checkPasswordForm);
-	$("#passwordCheck").click(checkPasswordFormat);
-	$("#passwordCheck").change(CheckpasswordSame);
+	$("#passwordr").click(passwordFormatR);
+	$("#passwordr").change(checkPasswordFormR);
+	$("#passwordCheckr").click(checkPasswordFormatR);
+	$("#passwordCheckr").change(CheckpasswordSameR);
 	$("#email").change(checkemail);
 	$("#email").click(emailFormat);
 	$("#reset").click(reset)
@@ -53,22 +57,34 @@ function usernameFormat() {
 	$("#errorInfo").attr("class","err");
 	$("#errorInfo").text("letters, numbers or underscores but cannot begin with understore(3~12 characters)");
 }
-function nameFormat() {
-	$("#errorInfo").attr("class","err");
-	$("#errorInfo").text("Your name should be all letters")
+function usernameFormatR() {
+	$("#errorInfoR").attr("class","err");
+	$("#errorInfoR").text("letters, numbers or underscores but cannot begin with understore(3~12 characters)");
+}
+function nameFormatR() {
+	$("#errorInfoR").attr("class","err");
+	$("#errorInfoR").text("Your name should be all letters")
 }
 
 function emailFormat() {
-	$("#errorInfo").attr("class","err");
-	$("#errorInfo").text("Please enter the correct email address")
+	$("#errorInfoR").attr("class","err");
+	$("#errorInfoR").text("Please enter the correct email address")
 }
 function passwordFormat() {
 	$("#errorInfo").attr("class", "err");
 	$("#errorInfo").text("numbers, letters or underscores(6~12 characters)")
 }
+function passwordFormatR() {
+	$("#errorInfoR").attr("class", "err");
+	$("#errorInfoR").text("numbers, letters or underscores(6~12 characters)")
+}
 function checkPasswordFormat() {
 	$("#errorInfo").attr("class", "err");
 	$("#errorInfo").text("Please confirm your password")
+}
+function checkPasswordFormatR() {
+	$("#errorInfoR").attr("class", "err");
+	$("#errorInfoR").text("Please confirm your password")
 }
 function checkusername() {  //check the fomat of username
 	var patten = new RegExp(/^\w+$/);
@@ -84,6 +100,20 @@ function checkusername() {  //check the fomat of username
 		rule.one = 1;
 	}
 }
+function checkusernameR() {  //check the fomat of username
+	var patten = new RegExp(/^\w+$/);
+	var username = $(this).val();
+	if (!patten.test(username)||username.length > 12||
+		username.length < 3||username[0] == '_') {
+		$(this).attr("class", "red")
+		rule.one = 0;
+	} else {
+		$("#errorInfoR").text("Please input your information");
+		$("#errorInfoR").attr("class","correct");
+		$(this).attr("class", "green")
+		rule.one = 1;
+	}
+}
 
 function checkfirstname() {  //check the fomat of firstname
 	var patten = new RegExp(/^[a-zA-Z]+$/);
@@ -92,8 +122,8 @@ function checkfirstname() {  //check the fomat of firstname
 		$(this).attr("class", "red")
 		rule.two = 0;
 	} else {
-		$("#errorInfo").text("Please input your information");
-		$("#errorInfo").attr("class","correct");
+		$("#errorInfoR").text("Please input your information");
+		$("#errorInfoR").attr("class","correct");
 		$(this).attr("class", "green");
 		rule.two = 1;
 	}
@@ -106,8 +136,8 @@ function checklastname() {  ////check the fomat of lastrname
 		$(this).attr("class", "red")
 		rule.three = 0;
 	} else {
-		$("#errorInfo").text("Please input your information");
-		$("#errorInfo").attr("class","correct");
+		$("#errorInfoR").text("Please input your information");
+		$("#errorInfoR").attr("class","correct");
 		$(this).attr("class", "green");
 		rule.three = 1;
 	}
@@ -117,8 +147,8 @@ function checkemail() {  //check the fomat of e-mail
 	var name = $(this).val();
 	var patten = new RegExp(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/);
 	if (patten.test(name)) {
-		$("#errorInfo").text("Please input your information");
-		$("#errorInfo").attr("class","correct");
+		$("#errorInfoR").text("Please input your information");
+		$("#errorInfoR").attr("class","correct");
 		$(this).attr("class", "green");
 		rule.four = 1;
 	} else {
@@ -140,6 +170,20 @@ function checkPasswordForm() {  //check the fomat of password
 		rule.five = 1;
 	}
 }
+function checkPasswordFormR() {  //check the fomat of password
+	var patten = new RegExp(/^[a-zA-Z0-9_-]{6,12}$/);
+	var name = $(this).val();
+	if (!patten.test(name)) {
+		$(this).attr("class", "red")
+		rule.five = 0;
+	} else {
+		$("#errorInfoR").text("Please input your information");
+		$("#errorInfoR").attr("class","correct");
+		$(this).attr("class", "green")
+		rule.five = 1;
+	}
+}
+
 function CheckpasswordSame() {  //check the password is not the same
 	var password = $("#password").val();
 	var check = $(this).val();
@@ -154,6 +198,19 @@ function CheckpasswordSame() {  //check the password is not the same
 		rule.six = 1;
 	}
 }
-
+function CheckpasswordSameR() {  //check the password is not the same
+	var password = $("#passwordr").val();
+	var check = $(this).val();
+	if (password != check) {
+		$(this).attr("class", "red");
+		$("#errorInfoR").text("Your password and the confirmed one do not match.");
+		rule.six= 0;
+	} else {
+		$("#errorInfoR").text("Please input your information");
+		$("#errorInfoR").attr("class","correct");
+		$(this).attr("class", "green")
+		rule.six = 1;
+	}
+}
 
 
