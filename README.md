@@ -8,7 +8,7 @@ Node.js Project of COMP5347 Web Application Development
 
 This is a data analytic web application with three-tiered architecture. It is required to query and compute various summary analytics at server side and present the results on a web page.
 
-[Demo]()
+[Demo](http://stonelyu.com:3000)
 
 ## How to use
 
