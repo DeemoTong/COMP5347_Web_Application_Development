@@ -24,7 +24,16 @@ This is a data analytic web application with three-tiered architecture. It is re
 
 3. Connect this project to your database. Just modify the database connection file [db.js](app/models/db.js).
 
-4. run this project
+4. Before running this project, execute
+
+    ```bash
+    cd app/script
+    node updateType.js
+    ```
+
+    for data pre-processing.
+
+5. run this project
 
     ```bash
     node server.js
