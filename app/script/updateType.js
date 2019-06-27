@@ -3,8 +3,8 @@
 var mongoose = require('../models/db')
 var fs = require('fs');
 
-var admin = fs.readFileSync(__dirname + '/../../public/admin.txt').toString().split("\n");
-var bot = fs.readFileSync(__dirname + '/../../public/bot.txt').toString().split("\n");
+var admin = fs.readFileSync(__dirname + '/../../public/Admin.txt').toString().split("\n");
+var bot = fs.readFileSync(__dirname + '/../../public/Bot.txt').toString().split("\n");
 var registed = admin.concat(bot);
 
 // mongoose.connect('mongodb://localhost/wikipedia',function () {
