@@ -1,0 +1,1 @@
+FOR %%i IN (./*.json) DO mongoimport --host REMOTEIP:port --db wikipedia --collection revisions --type json --file "%%i" --jsonArray
