@@ -8,8 +8,6 @@ Node.js Project of COMP5347 Web Application Development
 
 This is a data analytic web application with three-tiered architecture. It is required to query and compute various summary analytics at server side and present the results on a web page.
 
-[Demo](http://stonelyu.com:3000)
-
 ## How to use
 
 > **This project invokes google's APIs for drawing charts, if you are in China, you may need a VPN for correct charts.**
@@ -38,6 +36,7 @@ This is a data analytic web application with three-tiered architecture. It is re
 5. run this project
 
     ```bash
+    # in the root directory of this project
     node server.js
     ```
 
@@ -46,10 +45,10 @@ This is a data analytic web application with three-tiered architecture. It is re
 The dataset contains a number of files in JSON formats storing revision histories of Wikipedia articles.
 
 Fields in the dataset:
-    - title: stores the title of the article
-    - timestamp: stores the date and time a revision was made
-    - user: stores the user name or IP address of the user that made the revision
-    - anon: the presence of the field indicates that the revision is made by anonymous users.
+    - `title`: stores the title of the article
+    - `timestamp`: stores the date and time a revision was made
+    - `user`: stores the user name or IP address of the user that made the revision
+    - `anon`: the presence of the field indicates that the revision is made by anonymous users.
 
 ## Functional Requirements
 
